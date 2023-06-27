@@ -2,25 +2,22 @@ package com.selfstudy.jpa.bookmanager.repository;
 
 import com.selfstudy.jpa.bookmanager.domain.Gender;
 import com.selfstudy.jpa.bookmanager.domain.User;
-import org.assertj.core.util.Lists;
+import com.selfstudy.jpa.bookmanager.repository.dto.UserHistoryRepository;
+import com.selfstudy.jpa.bookmanager.repository.dto.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.*;
 
-import javax.transaction.Transactional;
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.contains;
-import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.endsWith;
 
 @SpringBootTest //spring context를 로딩을해서 테스트에 활용하겠다는 의미
 class UserRepositoryTest {
     @Autowired //의존성 추가
-    private  UserRepository userRepository;
+    private UserRepository userRepository;
+
+    @Autowired
+    private UserHistoryRepository userHistoryRepository;
 
     @Test
    // @Transactional
@@ -196,6 +193,22 @@ class UserRepositoryTest {
         userRepository.save(user);
 
         System.out.println("to-be : " + userRepository.findAll().get(0));
+    }
+
+    @Test
+    void userHistoryTest(){
+        User user = new User();
+        user.setEmail("martin-new@mutsa.com");
+        user.setName("martin-new");
+
+        userRepository.save(user); // insert
+
+        user.setName("martin-new-new");
+
+        userRepository.save(user); // update
+
+        userHistoryRepository.findAll().forEach(System.out::println);
+
     }
 
 }

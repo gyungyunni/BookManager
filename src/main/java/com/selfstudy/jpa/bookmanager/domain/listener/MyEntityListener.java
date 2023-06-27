@@ -1,4 +1,6 @@
-package com.selfstudy.jpa.bookmanager.domain;
+package com.selfstudy.jpa.bookmanager.domain.listener;
+
+import com.selfstudy.jpa.bookmanager.domain.listener.Auditable;
 
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;

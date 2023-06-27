@@ -1,6 +1,7 @@
 package com.selfstudy.jpa.bookmanager.domain;
 
 import java.time.LocalDateTime;
+
 import org.junit.jupiter.api.Test;
 
 class UserTest {

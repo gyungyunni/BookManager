@@ -1,4 +1,4 @@
-package com.selfstudy.jpa.bookmanager.repository;
+package com.selfstudy.jpa.bookmanager.repository.dto;
 
 import com.selfstudy.jpa.bookmanager.domain.User;
 import org.springframework.data.domain.Page;
@@ -10,7 +10,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 
 //스프링 jpa가 지원(상속으로 많은 기능 제공), 제너릭 처음 값은 엔티티 타입, 두번째 값은 pk

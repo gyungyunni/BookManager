@@ -1,4 +1,4 @@
-package com.selfstudy.jpa.bookmanager.domain;
+package com.selfstudy.jpa.bookmanager.domain.listener;
 
 import java.time.LocalDateTime;
 
