@@ -12,10 +12,6 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-/**
- * @author Martin
- * @since 2021/03/31
- */
 @Data
 @MappedSuperclass  // 해당 클래스의 필드를 상속받는 엔티티의 컬럼으로 포함시켜줌.
 

@@ -10,18 +10,21 @@ import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @RequiredArgsConstructor
-@Builder
 @Data
-@Entity //pk 설정해줘야함
-@EntityListeners(value = {UserEntityListener.class})
-public class User extends BaseEntity implements Auditable {
-    @Id //pk설정
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //Auto Increment 자동으로 증가
-                                                        //해당 객체들은 어떻게 조회하고 저장할 수 있을까 -> repository 생성
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@Builder
+@Entity
+@EntityListeners(value = { UserEntityListener.class })
+public class User extends BaseEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NonNull
@@ -33,23 +36,31 @@ public class User extends BaseEntity implements Auditable {
     @Enumerated(value = EnumType.STRING)
     private Gender gender;
 
-//    @Column(updatable = false)
-//    @CreatedDate
-//    private LocalDateTime createdAt;
+//    @Embedded
+//    @AttributeOverrides({
+//            @AttributeOverride(name = "city", column = @Column(name = "home_city")),
+//            @AttributeOverride(name = "district", column = @Column(name = "home_district")),
+//            @AttributeOverride(name = "detail", column = @Column(name = "home_address_detail")),
+//            @AttributeOverride(name = "zipCode", column = @Column(name = "home_zip_code"))
+//    })
+//    private Address homeAddress;
 //
-//    @LastModifiedDate
-//    private LocalDateTime updatedAt;
-
-//    @PrePersist
-//    public void prePersist(){
-//        this.createdAt = LocalDateTime.now();
-//        this.updatedAt = LocalDateTime.now();
-//    }
+//    @Embedded
+//    @AttributeOverrides({
+//            @AttributeOverride(name = "city", column = @Column(name = "company_city")),
+//            @AttributeOverride(name = "district", column = @Column(name = "company_district")),
+//            @AttributeOverride(name = "detail", column = @Column(name = "company_address_detail")),
+//            @AttributeOverride(name = "zipCode", column = @Column(name = "company_zip_code"))
+//    })
+//    private Address companyAddress;
 //
-//    @PreUpdate
-//    public void preUpdate(){
+//    @OneToMany(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+//    @ToString.Exclude
+//    private List<UserHistory> userHistories = new ArrayList<>();
 //
-//        this.updatedAt = LocalDateTime.now();
-//    }
-
+//    @OneToMany
+//    @JoinColumn(name = "user_id")
+//    @ToString.Exclude
+//    private List<Review> reviews = new ArrayList<>();
 }

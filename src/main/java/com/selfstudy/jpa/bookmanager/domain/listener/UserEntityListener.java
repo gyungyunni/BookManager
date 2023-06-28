@@ -10,8 +10,6 @@ import javax.persistence.PreUpdate;
 
 public class UserEntityListener {
 
-//    @Autowired // 스프링 빈으로 지정을 해야 이 어노테이션 가능(@Component)
-//    UserHistoryRepository userHistoryRepository; // 저장을 위해
     @PrePersist
     @PreUpdate //user엔티티가 생성되고 수정될때마다 유저 히스토리에 동일한 데이터가 생기게 됨
     public void prePersistAndPreUpdate(Object o){

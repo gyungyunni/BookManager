@@ -16,8 +16,8 @@ public class BookRepositoryTest {
     void bookTest() {
         Book book = new Book();
         book.setName("JPA 킹왕짱 되기");
-        book.setAuthor("김작가");
-//        book.setPublisherId(1L);
+        book.setAuthorId(1L);
+        book.setPublisherId(1L);
 
         bookRepository.save(book);
 
