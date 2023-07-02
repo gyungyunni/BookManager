@@ -1,4 +1,4 @@
-package com.selfstudy.jpa.bookmanager.repository;
+package com.selfstudy.jpa.bookmanager.repository.dto;
 
 import com.selfstudy.jpa.bookmanager.domain.Gender;
 import com.selfstudy.jpa.bookmanager.domain.User;

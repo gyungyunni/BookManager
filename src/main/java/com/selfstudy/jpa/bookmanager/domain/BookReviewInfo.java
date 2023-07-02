@@ -5,9 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor
@@ -16,10 +14,13 @@ import javax.persistence.Id;
 @EqualsAndHashCode(callSuper = true)
 public class BookReviewInfo extends BaseEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long boodkId;
+//    private Long boodkId; 지우고 엔티티 직접 참조하게
+    @OneToOne(optional = false) //1대1로 연관관계 매핑, optional = false로 하면 반드시 존재하는 값이 됨. book은 절대 null을 허용하지 않겠다란 의미
+                                                             //mappedBy = "bookReviewInfo" 를 하면 연관키를 해당 테이블에선 더이상 가지지 않음
+    private Book book;
 
     private float averageReviewScore;
 
