@@ -2,7 +2,7 @@ package com.selfstudy.jpa.bookmanager.repository.dto;
 
 
 import com.selfstudy.jpa.bookmanager.domain.Book;
-import com.selfstudy.jpa.bookmanager.repository.dto.BookRepository;
+import com.selfstudy.jpa.bookmanager.repository.BookRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

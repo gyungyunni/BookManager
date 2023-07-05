@@ -2,12 +2,15 @@ package com.selfstudy.jpa.bookmanager.repository.dto;
 
 import com.selfstudy.jpa.bookmanager.domain.Gender;
 import com.selfstudy.jpa.bookmanager.domain.User;
-import com.selfstudy.jpa.bookmanager.repository.dto.UserHistoryRepository;
-import com.selfstudy.jpa.bookmanager.repository.dto.UserRepository;
+import com.selfstudy.jpa.bookmanager.domain.UserHistory;
+import com.selfstudy.jpa.bookmanager.repository.UserHistoryRepository;
+import com.selfstudy.jpa.bookmanager.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.*;
+
+import java.util.List;
 
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.contains;
 
@@ -210,5 +213,33 @@ class UserRepositoryTest {
         userHistoryRepository.findAll().forEach(System.out::println);
 
     }
+
+    @Test
+    void userRelationTest() {
+        User user = new User();
+        user.setName("david");
+        user.setEmail("david@mutsa.com");
+        user.setGender(Gender.MALE);
+        userRepository.save(user); //david 저장
+
+        user.setName("daniel");
+        userRepository.save(user); //daniel로 개명함
+
+        user.setEmail("daniel@mutsa.com"); //email도 변경함
+        userRepository.save(user);
+
+//        userHistoryRepository.findAll().forEach(System.out::println); //리스트 보기 좋게 스트림으로 로그를 찍는법
+                                                                      // System.out.println(">>> " + bookReviewInfoRepository.findAll()); 이렇게도 찍음
+
+//        List<UserHistory> result = userHistoryRepository.findByUserId(
+//            userRepository.findByEmail("daniel@mutsa.com").getId());
+
+        List<UserHistory> result = userRepository.findByEmail("daniel@mutsa.com").getUserHistories();
+
+        result.forEach(System.out::println);
+//
+//        System.out.println("UserHistory.getUser() : " + userHistoryRepository.findAll().get(0).getUser());
+    }
+
 
 }

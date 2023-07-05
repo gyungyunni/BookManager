@@ -1,12 +1,11 @@
 package com.selfstudy.jpa.bookmanager.domain;
 
-import com.selfstudy.jpa.bookmanager.domain.listener.Auditable;
-import com.selfstudy.jpa.bookmanager.repository.dto.BookRepository;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 
 import javax.persistence.*;
 

@@ -36,6 +36,11 @@ public class User extends BaseEntity {
     @Enumerated(value = EnumType.STRING)
     private Gender gender;
 
+    @OneToMany(fetch =  FetchType.EAGER)
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    private List<UserHistory> userHistories = new ArrayList<>(); //get.userhistory를 했을 떄 nullpointException이 발생하지 않도록
+                                                                 //new ArrayList<>()로 기본 리스트 생성
+
 //    @Embedded
 //    @AttributeOverrides({
 //            @AttributeOverride(name = "city", column = @Column(name = "home_city")),

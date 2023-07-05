@@ -1,4 +1,4 @@
-package com.selfstudy.jpa.bookmanager.repository.dto;
+package com.selfstudy.jpa.bookmanager.repository;
 
 import com.selfstudy.jpa.bookmanager.domain.User;
 import org.springframework.data.domain.Page;

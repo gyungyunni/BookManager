@@ -22,14 +22,13 @@ public class UserHistory extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long UserId;
+    @Column(name = "user_id")
+    private Long userId;
 
     private String name;
 
     private String email;
 
-    @Enumerated(value = EnumType.STRING)
-    private Gender gender;
 
 //    @Embedded
 //    @AttributeOverrides({
