@@ -22,12 +22,13 @@ public class UserHistory extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_id")
-    private Long userId;
 
     private String name;
 
     private String email;
+
+    @ManyToOne
+    private User user;
 
 
 //    @Embedded
@@ -47,8 +48,5 @@ public class UserHistory extends BaseEntity {
 //            @AttributeOverride(name = "zipCode", column = @Column(name = "company_zip_code"))
 //    })
 //    private Address companyAddress;
-//
-//    @ManyToOne
-//    @ToString.Exclude
-//    private User user;
+
 }

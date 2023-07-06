@@ -228,17 +228,17 @@ class UserRepositoryTest {
         user.setEmail("daniel@mutsa.com"); //email도 변경함
         userRepository.save(user);
 
-//        userHistoryRepository.findAll().forEach(System.out::println); //리스트 보기 좋게 스트림으로 로그를 찍는법
+        userHistoryRepository.findAll().forEach(System.out::println); //리스트 보기 좋게 스트림으로 로그를 찍는법
                                                                       // System.out.println(">>> " + bookReviewInfoRepository.findAll()); 이렇게도 찍음
 
 //        List<UserHistory> result = userHistoryRepository.findByUserId(
 //            userRepository.findByEmail("daniel@mutsa.com").getId());
 
-        List<UserHistory> result = userRepository.findByEmail("daniel@mutsa.com").getUserHistories();
+        List<UserHistory> result = userRepository.findByEmail("daniel@mutsa.com").getUserHistories(); // user에서 userHIstory 가져오는거
 
         result.forEach(System.out::println);
-//
-//        System.out.println("UserHistory.getUser() : " + userHistoryRepository.findAll().get(0).getUser());
+
+       System.out.println("UserHistory.getUser() : " + userHistoryRepository.findAll().get(0).getUser()); //userHistory에서 user 가져오는거 첫번째 user를 가져오는거
     }
 
 

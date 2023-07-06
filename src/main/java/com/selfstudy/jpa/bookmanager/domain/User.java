@@ -38,8 +38,13 @@ public class User extends BaseEntity {
 
     @OneToMany(fetch =  FetchType.EAGER)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    @ToString.Exclude
     private List<UserHistory> userHistories = new ArrayList<>(); //get.userhistory를 했을 떄 nullpointException이 발생하지 않도록
                                                                  //new ArrayList<>()로 기본 리스트 생성
+    @OneToMany
+    @JoinColumn(name = "user_id")  //중간 테이블 없애기
+    @ToString.Exclude  // 순환참조 제거
+    private List<Review> reviews = new ArrayList<>();  //null exception 방지
 
 //    @Embedded
 //    @AttributeOverrides({
@@ -59,13 +64,6 @@ public class User extends BaseEntity {
 //    })
 //    private Address companyAddress;
 //
-//    @OneToMany(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "user_id", insertable = false, updatable = false)
-//    @ToString.Exclude
-//    private List<UserHistory> userHistories = new ArrayList<>();
 //
-//    @OneToMany
-//    @JoinColumn(name = "user_id")
-//    @ToString.Exclude
-//    private List<Review> reviews = new ArrayList<>();
+
 }
